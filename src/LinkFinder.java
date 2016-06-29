@@ -29,12 +29,13 @@ public class LinkFinder {//<a href=".*">
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		try{
 			String value;
-			String pattern = new String("\\s*<(a|A)\\s+(h|H)(r|R)(e|E)(f|F)\\s*=\\s*\"(.*)\".*\\s*.*>.*</a>\\s*");
+			//String pattern = new String("\\s*<\\s*[aA]\\s+[hH][rR][eE][fF]\\s*=\\s*\"(.*)\".*</a>");
+			String pattern = new String("\\s*<\\s*[aA]\\s+[hH][rR][eE][fF]\\s*=\\s*\"([^\"]*)\".*</a>");
 			Pattern p = Pattern.compile(pattern);
 			while(null != (value = reader.readLine())){
 				Matcher m = p.matcher(value.toLowerCase());
 				if(m.matches()){
-					String save = m.group(6);
+					String save = m.group(1);
 					links.add(save);
 				}
 			}
