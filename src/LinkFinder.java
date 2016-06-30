@@ -38,12 +38,11 @@ public class LinkFinder {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		try{
 			String value;
-			//String pattern = new String("\\s*<\\s*[aA]\\s+[hH][rR][eE][fF]\\s*=\\s*\"(.*)\".*</a>");
-			String pattern = new String(".*<\\s*[aA]\\s+[hH][rR][eE][fF]\\s*=\\s*\"([^\"]*)\".*>");
+			String pattern = new String("<\\s*[aA]\\s+[hH][rR][eE][fF]\\s*=\\s*\"([^\"]*)\".*>");
 			Pattern p = Pattern.compile(pattern);
 			while(null != (value = reader.readLine())){
 				Matcher m = p.matcher(value.toLowerCase());
-				if(m.matches()){
+				if(m.find()){
 					String save = m.group(1);
 					links.add(save);
 				}
@@ -69,7 +68,7 @@ public class LinkFinder {
 			e.printStackTrace();
 		}
 		catch(NullPointerException a){
-			System.out.println("Kill Yourself.");
+			System.out.println("Tried to read non-existant line.");
 		}
 	}
 	
