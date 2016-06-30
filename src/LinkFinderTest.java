@@ -17,10 +17,12 @@ public class LinkFinderTest {
 		finder.makeAnswerStream();
 		finder.processAnswers(finder.getAnswerStream());
 		Iterator<String> answers = finder.getAnswers();
-//		while(links.hasNext() && answers.hasNext()){
-//			System.out.println(links.next() + " = " + answers.next());
-//			assertEquals(links.next(), answers.next());
-//		}
+		while(links.hasNext()){
+			webValue = links.next().toString();
+			answerValue = answers.next().toString();
+			assertEquals(webValue, answerValue);
+			System.out.println(webValue + " = " + answerValue);
+		}
 	}
 
 }

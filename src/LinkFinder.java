@@ -41,7 +41,7 @@ public class LinkFinder {
 			String pattern = new String("<\\s*[aA]\\s+[hH][rR][eE][fF]\\s*=\\s*\"([^\"]*)\".*>");
 			Pattern p = Pattern.compile(pattern);
 			while(null != (value = reader.readLine())){
-				Matcher m = p.matcher(value.toLowerCase());
+				Matcher m = p.matcher(value);
 				if(m.find()){
 					String save = m.group(1);
 					links.add(save);
